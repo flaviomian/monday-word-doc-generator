@@ -29,14 +29,24 @@ app.get("/", (req, res) => {
 
 // Endpoint para gerar documento
 app.post("/generate-doc", async (req, res) => {
-  try {
-    const itemId = req.body.itemId || req.query.itemId; // Pegando tanto do body quanto da query
-
-    if (!itemId) {
-      return res.status(400).send({ error: "Item ID não informado." });
+    try {
+      const itemId = req.body.itemId || req.query.itemId; // Pegando tanto do body quanto da query
+  
+      if (!itemId) {
+        return res.status(400).send({ error: "Item ID não informado." });
+      }
+  
+      const docBuffer = await generateDoc(itemId);
+      await uploadFile(itemId, docBuffer);
+  
+      res.send("Documento gerado e anexado com sucesso!");
+    } catch (error) {
+      console.error("Erro no generate-doc:", error);
+      res.status(500).send({ error: "Erro ao gerar documento." });
     }
-
-    const docBuffer = await generateDoc(itemId);
-    await uploadFile(itemId, docBuffer);
-
-    res.send("Documento
+  });
+  
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
