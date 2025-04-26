@@ -1,0 +1,7 @@
+{
+    "client_id": "SEU_CLIENT_ID",
+    "client_secret": "SEU_CLIENT_SECRET",
+    "scopes": "boards:read,files:write",
+    "redirect_uri": "URL_DO_VERCEL/callback"
+  }
+  
