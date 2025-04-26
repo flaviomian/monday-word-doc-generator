@@ -1,7 +1,17 @@
 {
-    "client_id": "SEU_CLIENT_ID",
-    "client_secret": "SEU_CLIENT_SECRET",
-    "scopes": "boards:read,files:write",
-    "redirect_uri": "URL_DO_VERCEL/callback"
+    "name": "monday-word-doc-generator",
+    "id": "app_001",
+    "slug": "monday-word-doc-generator",
+    "version": "1.0.0",
+    "permissions": [],
+    "platform": "monday",
+    "components": [
+      {
+        "type": "board_view",
+        "name": "Gerar Contrato",
+        "url": "https://monday-word-doc-generator.vercel.app/",
+        "settings": {}
+      }
+    ]
   }
   
