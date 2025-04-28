@@ -3,6 +3,7 @@ import Docxtemplater from "docxtemplater";
 import fs from "fs";
 import path from "path";
 import axios from "axios";
+import FormData from "form-data";
 
 const MONDAY_API_TOKEN = process.env.MONDAY_API_TOKEN;
 
@@ -44,10 +45,10 @@ export async function generateDoc(itemId) {
 
 export async function uploadFile(itemId, fileBuffer) {
   const formData = new FormData();
-  formData.append("file", new Blob([fileBuffer]), "ContratoGerado.docx");
+  formData.append("file", fileBuffer, "ContratoGerado.docx");
 
   const mutation = `
-    mutation($file: File!) {
+    mutation ($file: File!) {
       add_file_to_column(item_id: ${itemId}, column_id: "arquivos", file: $file) {
         id
       }
