@@ -1,0 +1,35 @@
+{
+  "name": "Gerador de Contrato Automático",
+  "description": "Gera um contrato Word e anexa na coluna de arquivos quando o botão é clicado.",
+  "categories": ["Workflow Automations"],
+  "support_email": "seuemail@seudominio.com",
+  "support_url": "https://seudominio.com",
+  "features": [
+    {
+      "kind": "integration",
+      "integration": {
+        "name": "Gerar Contrato",
+        "description": "Gera e anexa um contrato Word ao clicar no botão",
+        "trigger": {
+          "name": "Quando o botão é clicado",
+          "source": "monday",
+          "type": "webhook",
+          "inputFields": []
+        },
+        "action": {
+          "name": "Gerar e anexar documento",
+          "url": "monday-word-doc-generator.vercel.app/api/webhook",
+          "method": "post",
+          "headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM4MDE0Njc2MCwiYWFpIjoxMSwidWlkIjozNjMyMjY3NiwiaWFkIjoiMjAyNC0wNy0wM1QxNzowMjoyNy4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTQwNTY0MDQsInJnbiI6InVzZTEifQ.sFGfnht4AMYVsHt_ZbFqP9ryKO-NDa1UgBsZ-1BSMzM"
+            }
+          ],
+          "body": "{\"event\": \"{{event}}\"}"
+        },
+        "recipe": "Quando o botão for clicado, gerar e anexar contrato Word"
+      }
+    }
+  ]
+}
