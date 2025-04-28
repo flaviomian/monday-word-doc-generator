@@ -49,7 +49,7 @@ export async function uploadFile(itemId, fileBuffer) {
 
   const mutation = `
     mutation ($file: File!) {
-      add_file_to_column(item_id: ${itemId}, column_id: "arquivos", file: $file) {
+      add_file_to_column(item_id: ${itemId}, column_id: "file_mkqc1xb7", file: $file) {
         id
       }
     }
